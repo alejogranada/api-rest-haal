@@ -4,6 +4,7 @@
   "description": "Esta es una api REST para el registro de clientes y su autenticación en la plataforma.",
   "main": "restApi.js",
   "scripts": {
+    "start": "env-cmd -f ./.env nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -15,10 +16,16 @@
   "author": "UCP",
   "license": "ISC",
   "dependencies": {
+    "await": "^0.2.6",
     "bcrypt": "^4.0.1",
+    "bcryptjs": "^2.4.3",
     "config": "^3.3.1",
+    "crypto-js": "^4.0.0",
+    "env-cmd": "^10.1.0",
     "express": "^4.17.1",
-    "mongoose": "^5.9.16"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.16",
+    "validator": "^13.0.0"
   },
   "devDependencies": {
     "chalk": "^4.0.0"

@@ -2,6 +2,7 @@
 const express = require("express");
 const config = require("config");
 const controller = require("./controllers/customer/customer.controller")
+const loginController = require("./controllers/security/login.controller")
 const bodyParser = require("body-parser");
 
 /** server configuration */
@@ -15,12 +16,17 @@ app.use(bodyParserUrlEncoded);
 
 // welcome message
 app.get("/", (req, res) => {
-    res.send("Welcome to my express server. CHALO HP!");
+    res.send("Welcome to my express server. HAAL");
 });
 
 // POST
 app.post("/api/customer/create", (req, res, next) => {
     controller.createCustomer(req, res, next);
+});
+
+// POST
+app.post("/api/login", (req, res) => {
+    loginController.customerLogin(req, res);
 });
 
 // GET

@@ -1,7 +1,9 @@
 /** packages */
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
+const bcrypt = require('bcryptjs')
 
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
+
 
 const customerSchema = new Schema(
     {
@@ -34,12 +36,28 @@ const customerSchema = new Schema(
         },
         password:{
             type: "String",
-            required: true
-        }
+            required: true,
+            minLength: 7
+        },
+        tokens: [{
+            token: {
+                type: String,
+                required: true
+            }
+        }]
     },
     {
         timestamps: true
     }
 );
+
+customerSchema.pre('save', async function (next) {
+    // Hash the password before saving the user model
+    const customer = this
+    if (customer.isModified('password')) {
+        customer.password = await bcrypt.hash(customer.password, 8)
+    }
+    next()
+})
 
 module.exports = customerSchema;

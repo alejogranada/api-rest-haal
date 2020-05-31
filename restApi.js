@@ -15,7 +15,7 @@ app.use(bodyParserUrlEncoded);
 
 // welcome message
 app.get("/", (req, res) => {
-    res.send("Welcome to my express server.");
+    res.send("Welcome to my express server. CHALO HP!");
 });
 
 // POST

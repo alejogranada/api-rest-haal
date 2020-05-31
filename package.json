@@ -1,0 +1,26 @@
+{
+  "name": "admin-clientes",
+  "version": "1.0.0",
+  "description": "Esta es una api REST para el registro de clientes y su autenticación en la plataforma.",
+  "main": "restApi.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "clientes",
+    "login",
+    "mongodb"
+  ],
+  "author": "UCP",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.16"
+  },
+  "devDependencies": {
+    "chalk": "^4.0.0"
+  }
+}

@@ -7,10 +7,16 @@ const config = require("config");
 const jwtKey = config.get("JWT_KEY");
 
 const auth = async(req, res, next) => {
-    const token = req.header('Authorization').replace('Bearer ', '')
-    const data = jwt.verify(token, jwtKey)
+    console.log(req.header('Authorization'));
+    const token = req.header('Authorization').replace('Bearer ', '');
+    console.log(token);
+    const data = jwt.verify(token, jwtKey);
+    console.log("data");
+    console.log(data);
+    console.log(jwtKey);
     try {
         const user = await User.findOne({ _id: data._id, 'tokens.token': token })
+        console.log(user);
         if (!user) {
             throw new Error()
         }

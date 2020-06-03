@@ -3,6 +3,8 @@ const express = require("express");
 const config = require("config");
 const controller = require("./controllers/customer/customer.controller")
 const loginController = require("./controllers/security/login.controller")
+const deliveryController = require("./controllers/delivery/delivery.controller")
+const auth = require("./controllers/middleware/auth")
 const bodyParser = require("body-parser");
 
 /** server configuration */
@@ -59,9 +61,27 @@ app.listen(port, () => {
     console.log(`Express server is running in port ${port}`);
 });
 
+// POST
+app.post("/api/delivery/create",auth , async (req, res, next) => {
+    deliveryController.createDelivery(req, res, next);
+});
 
 
+app.get("/api/delivery/getAll",auth , async  (req, res, next) => {
+    deliveryController.getAllProducts(req, res, next);
+});
 
+app.get("/api/delivery/getByDocument/:document",auth , (req, res, next) => {
+    deliveryController.getDeliveryByDocument(req, res, next);
+});
+
+app.put("/api/delivery/update",auth , (req, res, next) => {
+    deliveryController.updateDelivery(req, res, next);
+});
+
+app.delete("/api/delivery/delete",auth , (req, res, next) => {
+    deliveryController.removeDelivery(req, res, next);
+});
 
 
 
